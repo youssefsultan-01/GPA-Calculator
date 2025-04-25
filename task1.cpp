@@ -1,11 +1,16 @@
-﻿///// name:Youssef mohamed ahmed sultan , ID:20245084
-////  name:Mrwan mohamed aboelela       , ID:20245061
-
-#include <vector>
+﻿#include <vector>
 #include <string>
 #include <iomanip>
 #include<iostream>
 using namespace std;
+
+string getLetterFromPoint(double point) {
+    if (point >= 4.00) return "A";
+    else if (point >= 3.30) return "B";
+    else if (point >= 2.70) return "C";
+    else if (point >= 2.20) return "D";
+    else return "F";
+}
 double getGradeFromPoints(int numsubjects) {
     double totalpoints = 0.0;
     double highpoints = 0.0;
@@ -44,26 +49,8 @@ double getGradeFromPoints(int numsubjects) {
             lowpoints = point;
         totalpoints += point;
     }
-    if (highpoints == 4.00) 
-        cout << "highest grade: " << 'A' << endl;
-    else if (highpoints == 3.30)
-        cout << "highest grade: " << 'B' << endl;
-    else if (highpoints == 2.70)
-        cout << "highest grade: " << 'C' << endl;
-    else if (highpoints == 2.20)
-        cout << "highest grade: " << 'D' << endl;
-    else
-        cout<< "highest grade: " << 'F' << endl;
-    if (lowpoints == 4.00)
-        cout << "lowest grade: " << 'A' << endl;
-    else if (lowpoints == 3.30)
-        cout << "lowest grade: " << 'B'<<endl;
-    else if (lowpoints == 2.70)
-        cout << "lowest grade: " << 'C'<<endl;
-    else if (lowpoints == 2.20)
-        cout << "lowest grade: " << 'D'<<endl;
-    else
-        cout << "lowest grade: " << 'F' << endl;
+    cout << "Highest grade: " << getLetterFromPoint(highpoints) << endl;
+    cout << "Lowest grade: " << getLetterFromPoint(lowpoints) << endl;
  
     return totalpoints;
 }
@@ -76,16 +63,16 @@ string getGeneralGrade(double gpa) {
         GeneralGrade = "Excellent";
     }
     else if (gpa >= 3.3) {
-        cout << "GPA = " << gpa << " \nGeneral Grade: Very Good" << endl;
-        GeneralGrade = " \nGeneral Grade: Very Good";
+        cout << "GPA = " << gpa  << endl;
+        GeneralGrade = "General Grade: Very Good";
     }
     else if (gpa >= 2.7) {
         cout << "GPA = " << gpa << endl;
-        GeneralGrade = " \nGeneral Grade: Good";
+        GeneralGrade = " General Grade: Good";
     }
     else if (gpa >= 2.0) {
         cout << "GPA = " << gpa << endl;
-        GeneralGrade = " \nGeneral Grade: Fair";
+        GeneralGrade = " General Grade: Fair";
     }
     else if (gpa >= 1.0) {
         cout << "GPA = " << gpa << endl;
@@ -112,10 +99,10 @@ int main() {
     
     cout << fixed << setprecision(2);
 	for (int student = 1; student <= totalstudents; student++) {
-		cout << "enter #"<<student<< "student name" << endl;
+		cout << "Enter name of student #"<<student<< ": " << endl;
 		cin >> name;
 		names.push_back(name);
-        cout << "enter number of student subjects" << endl;
+        cout << "enter number of student subjects for "<<name<<": " << endl;
 		cin >> numsubjects;
         totalpoints = 0.0;
         totalpoints= getGradeFromPoints(numsubjects);
